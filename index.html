@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Jingle Bells</title>
+    <style>
+        #player{
+            width: 90%;
+            margin: 0 auto;
+        }
+        #print-text{
+            width: 50%;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="player"></div>
+    <div id="print-text"></div>
+
+    <script>
+        var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+        var player, currentTime;
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('player', {
+            height: '390',
+            width: '640',
+            videoId: 'v7s2VjwQSMw',
+            events: {
+                'onReady': onPlayerReady,
+                'onStateChange': onPlayerStateChange
+            }
+            });
+        }
+        
+        function onPlayerReady(event) {
+            event.target.playVideo();
+            currentTime = player.getCurrentTime();
+            let videoInterval = window.setInterval(printText, 1000);
+        }
+        var done = false;
+        function onPlayerStateChange(event) {
+            if (event.data == YT.PlayerState.PLAYING && !done) {
+            setTimeout(stopVideo, 6000);
+            done = true;
+            }
+            currentTime = player.getCurrentTime();
+        }
+        function stopVideo() {
+            player.stopVideo();
+            currentTime = player.getCurrentTime();
+        }
+
+        function printText(currentTime){
+            currentTime = player.getCurrentTime();
+            currentTime = Math.floor(currentTime);
+
+            text.forEach(function(e, k, o){
+                if(k.includes(currentTime)){
+                    console.log(e);
+                    document.getElementById('print-text').innerText = e;
+                    document.getElementById('print-text').innerText.reload();
+                } else{
+                    document.getElementById('print-text').innerText = '*****';
+                }
+            });
+        }
+
+        var text = new Map;
+        text.set(
+            [8,9,10],
+            'Dashing through the snow'
+        );
+        text.set(
+            [11,12,13],
+            'On a one horse open sleigh'
+        );
+        text.set(
+            [14,15,16],
+            'O`er the fields we go,'
+        );
+        text.set(
+            [17,18],
+            'Laughing all the way'
+        );
+        text.set(
+            [19,20],
+            'Bells on bob tail ring,'
+        );
+        text.set(
+            [21,22,23],
+            'making spirits bright'
+        );
+        text.set(
+            [24,25],
+            'What fun it is to laugh and sing'
+        );
+        text.set(
+            [26,27],
+            'A sleighing song tonight'
+        );
+
+
+
+        text.set(
+            [28,29,73,74,117,118,119],
+            'Oh, jingle bells, jingle bells'
+        );
+        text.set(
+            [30,31,75,76,120,121],
+            'Jingle all the way'
+        );
+        text.set(
+            [32,33,77,78,79,122,123],
+            'Oh, what fun it is to ride'
+        );
+        text.set(
+            [34,35,36,80,81,82,124,125],
+            'In a one horse open sleigh'
+        );
+        text.set(
+            [37,38,83,84,126,127],
+            'Jingle bells, jingle bells'
+        );
+        text.set(
+            [39,40,85,86,128,129],
+            'Jingle all the way'
+        );
+        text.set(
+            [41,42,43,87,88,89,130,131,132],
+            'Oh, what fun it is to ride'
+        );
+        text.set(
+            [44,45,46,90,91,92,133,134,135,136,137],
+            'In a one horse open sleigh'
+        );
+
+
+
+        text.set(
+            [54,56],
+            'A day or two ago,'
+        );
+        text.set(
+            [56,57,58],
+            'I thought I`d take a ride,'
+        );
+        text.set(
+            [59,60],
+            'And soon Miss Fanny Brighte'
+        );
+        text.set(
+            [61,62,63],
+            'Was seated by my side;'
+        );
+        text.set(
+            [64,65],
+            'The horse was lean and lank'
+        );
+        text.set(
+            [66,67],
+            'Misfortune seemed his lot'
+        );
+        text.set(
+            [68,69,70],
+            'We got into a drifted bank,'
+        );
+        text.set(
+            [71,72],
+            'And then we got upsot.'
+        );
+
+
+        text.set(
+            [99,100],
+            'Now the ground is white'
+        );
+        text.set(
+            [101,102],
+            'Go it while you`re young'
+        );
+        text.set(
+            [103,104,105],
+            'Take the girls tonight'
+        );
+        text.set(
+            [106,107],
+            'And sing this sleighing song'
+        );
+        text.set(
+            [108,109,110],
+            'Just get a bob tailed bay'
+        );
+        text.set(
+            [111,112],
+            'two-forty as his speedy'
+        );
+        text.set(
+            [113,114],
+            'Hitch him to an open sleigh'
+        );
+        text.set(
+            [115,116],
+            'And crack! you`ll take the lead'
+        );
+    </script>
+</body>
+</html>
